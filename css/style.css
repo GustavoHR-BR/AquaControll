@@ -1,0 +1,46 @@
+/* RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    list-style: none;
+    font-family: sans-serif;
+}
+
+.login-form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.label-acesso{
+    margin: 2vh 0px 1vh 0px; 
+}
+
+.form-group-login-input{
+    width: 100%;
+}
+
+.login-input{
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 1vh 0 1vh 0vh;
+    padding: 1vh 0 1vh 1vh; 
+    width: 100%;
+}
+
+.form-btn-submit{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 2vh 0 2vh 0; 
+}
+
+.btn-submit{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1vh 4vh 1vh 4vh; 
+}
