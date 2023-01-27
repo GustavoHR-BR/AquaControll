@@ -6,7 +6,6 @@
     <link rel="icon" type="image/x-icon" href="/images/gotas48-SemFundo.ico">
     <title>Painel Inicial</title>
     <link href="../css/style.css" rel="stylesheet">
-
     <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
 </head>
 <body>
@@ -15,15 +14,15 @@
             <h4 class="label-acesso">Informe os dados de acesso:</h4>
 
             <div class="form-group-login-input">
-                <input class="login-input" id="user" type="text" placeholder="Usuário" id="user-input">
+                <input type="text" class="login-input" id="user" type="text" placeholder="Usuário" id="user-input">
             </div>
 
             <div class="form-group-login-input">
-                <input class="login-input" id="user" type="text" placeholder="Senha" id="pass-input">
+                <input type="password" class="login-input" id="pass" type="text" placeholder="Senha" id="pass-input">
             </div>
 
             <div class="form-btn-submit">
-                <input type="submit" value="Entrar" class="btn-submit" id="btn-submit">
+                <input type="button" value="Entrar" class="btn-submit" id="btn-submit" onclick="logIn()">
             </div>
 
             <!-- <div class="form-btn-submit">

@@ -8,6 +8,8 @@
     font-family: sans-serif;
 }
 
+/* START index.html */
+
 .login-form{
     align-items: center;
     display: flex;
@@ -43,4 +45,12 @@
     border: 1px solid black;
     border-radius: 5px;
     padding: 1vh 4vh 1vh 4vh; 
+}
+
+/* END index.html */
+
+.all{
+    width: 100vw;
+    height: 100vh;
+    background-color: brown;
 }
