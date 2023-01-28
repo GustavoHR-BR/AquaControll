@@ -49,8 +49,33 @@
 
 /* END index.html */
 
-.all{
+/* START main.html */
+
+.menu-superior{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    position: absolute;
     width: 100vw;
-    height: 100vh;
-    background-color: brown;
+    background-color: yellow;
+    padding: 0 2vw 0 2vw;
 }
+
+.form-comunidade{
+    align-items: center;
+    text-align: center;
+    height: 5vh;
+    width: 5vw;
+    margin: 1vw;
+    padding: 1.2vh 0 1vh 0;
+}
+
+#comunidade{
+    text-decoration: none;
+    color: #424242;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+/* END main.html */
