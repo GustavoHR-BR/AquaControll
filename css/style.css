@@ -5,7 +5,7 @@
     box-sizing: border-box;
     border: none;
     list-style: none;
-    font-family: sans-serif;
+    font-family: 'Raleway',Arial, Helvetica, sans-serif;
 }
 
 /* START index.html */
@@ -41,6 +41,10 @@
     padding: 2vh 0 2vh 0; 
 }
 
+#check-remember{
+    margin-top: 1.6vh;
+}
+
 .btn-submit{
     border: 1px solid black;
     border-radius: 5px;
@@ -51,31 +55,17 @@
 
 /* START main.html */
 
-.menu-superior{
-    align-items: center;
+#nav-sup{
+    padding: 0 2vw 0 0;
+}
+
+#menu-lateral{
+    margin-top: 0.55vh;
+}
+
+.main{
     display: flex;
     flex-direction: row;
-    height: 10vh;
-    position: absolute;
-    width: 100vw;
-    background-color: yellow;
-    padding: 0 2vw 0 2vw;
-}
-
-.form-comunidade{
-    align-items: center;
-    text-align: center;
-    height: 5vh;
-    width: 5vw;
-    margin: 1vw;
-    padding: 1.2vh 0 1vh 0;
-}
-
-#comunidade{
-    text-decoration: none;
-    color: #424242;
-    font-weight: 400;
-    white-space: nowrap;
 }
 
 /* END main.html */

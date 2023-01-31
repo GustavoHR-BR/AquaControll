@@ -6,6 +6,7 @@
     <link rel="icon" type="image/x-icon" href="/images/gotas48-SemFundo.ico">
     <title>Painel Inicial</title>
     <link href="../css/style.css" rel="stylesheet">
+    <link href="../cssBTS/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
 </head>
 <body>
@@ -21,17 +22,20 @@
                 <input type="password" class="login-input" id="pass" type="text" placeholder="Senha" id="pass-input">
             </div>
 
+            <div class="checkbox mb-3" id="from-check-remember">
+                <label>
+                  <input type="checkbox" id="check-remember" value="remember-me"> Guardar os dados de acesso
+                </label>
+            </div>
+
             <div class="form-btn-submit">
                 <input type="button" value="Entrar" class="btn-submit" id="btn-submit" onclick="logIn()">
             </div>
-
-            <!-- <div class="form-btn-submit">
-                <a href="#" class="forgot-pass">Esqueci minha senha</a>
-            </div> -->
         </fieldset>
     </form>
 
-    <script src="../js/scripts.js"></script>
+    <script type="text/javascript" src="../js/scripts.js"></script>
+    <script type="text/javascript" src="../jsBTS/bootstrap.min.js"></script>
     <script>window.onload = onLoadIndex();</script>
 </body>
 </html>
