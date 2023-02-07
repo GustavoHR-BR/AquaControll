@@ -1,71 +1,9 @@
 /* RESET */
-*{
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     border: none;
     list-style: none;
     font-family: 'Raleway',Arial, Helvetica, sans-serif;
-}
-
-/* START index.html */
-
-.login-form{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: center;
-}
-
-.label-acesso{
-    margin: 2vh 0px 1vh 0px; 
-}
-
-.form-group-login-input{
-    width: 100%;
-}
-
-.login-input{
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 1vh 0 1vh 0vh;
-    padding: 1vh 0 1vh 1vh; 
-    width: 100%;
-}
-
-.form-btn-submit{
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    padding: 2vh 0 2vh 0; 
-}
-
-#check-remember{
-    margin-top: 1.6vh;
-}
-
-.btn-submit{
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 1vh 4vh 1vh 4vh; 
-}
-
-/* END index.html */
-
-/* START main.html */
-
-#nav-sup{
-    padding: 0 2vw 0 0;
-}
-
-#menu-lateral{
-    margin-top: 0.55vh;
-}
-
-.main{
-    display: flex;
-    flex-direction: row;
-}
-
-/* END main.html */
+} */
