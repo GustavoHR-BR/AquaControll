@@ -3,7 +3,9 @@
 
 <head>
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
     <meta charset='UTF-8'>
@@ -11,192 +13,59 @@
     <link rel="icon" type="image/x-icon" href="/img/gotas48-SemFundo.ico">
     <title>Cadastro de pessoa</title>
     <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
-    <style>
-        *{
-            user-select: none;
-        }
-
-        .container-main{
-            height: 100vh;
-            width: 100vw;
-            margin: 0;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-image: linear-gradient(to right bottom, rgb(21, 110, 194), rgb(172, 172, 172));
-        }
-
-        .card{
-            width: 800px;
-            height: max-content;
-            padding: 10px 0 10px 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            max-height: 90%;
-            max-width: 90%;
-            min-height: 60%;
-            min-width: 60%;
-        }
-
-        .user{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .drop-select{
-            display: block;
-            width: 102%;
-            height: calc(1.5em + 0.75rem + 2px);
-            padding: 0.375rem 0.75rem;
-            font-size: large;
-            line-height: 1.5;
-            color: rgba(133,135,164,255);
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1px solid #d1d3e2;
-            border-radius: 56px;
-            border-color: rgba(209,211,226,255);
-            height: 52px;
-            margin: 20px -4px 0 -4px;
-            user-select: none;
-            cursor: pointer;
-        }
-
-        .drop-select:focus{
-            color: #6e707e;
-            background-color: #fff;
-            border-color: #bac8f3;
-            outline: 0;
-            outline-color: initial;
-            outline-style: initial;
-            outline-width: 0px;
-            box-shadow: 0 0 0 0.2rem rgb(78 115 223 / 25%);
-        }
-
-        .switch{
-            display: inline-block;
-            position: relative;
-            width: 40px;
-            height: 18px;
-            border-radius: 8px;
-            vertical-align: top;
-            margin: 6px 8px 0 5px;
-            cursor: pointer;
-        }
-
-        .switch-true{background: #15ee94;}
-        .switch-false{background: #ff394a;}
-
-        .btn-switch{
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            border-radius: 12px;
-            background: #fdfafb;
-            top: 9px;
-            margin: -12px 5px 0 -12px;
-            box-shadow: 0 0 2px rgb(0 0 0 / 40%);
-        }
-
-        .btn-switch-true{
-            left: 31px; 
-            box-shadow: 0 0 2px rgb(0 0 0 / 40%);
-            transition: left 0.15s ease-out;
-        }
-
-        .btn-switch-false{
-            left: 8px;
-            box-shadow: 0 0 2px rgb(0 0 0 / 40%);
-            transition: left 0.15s ease-out;
-        }
-
-        .switch-group{
-            width: 80%;
-            height: 50px;
-            margin: 20px 7% 0 50px;
-            position: relative;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-
-        .left-side{
-            width: 50%;
-            height: 80%;
-            padding-top: 18px;
-            position: relative;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: start;
-        }
-
-        .right-side{
-            width: 50%;
-            height: 80%;
-            padding-bottom: 4px;
-            position: relative;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: end;
-        }
-
-        .card-back{
-            background-color: #fff;
-            margin: 5%;
-            width: 55%;
-            height: max-content;
-            border-radius: 10px;
-        }
-
-        .card-body{
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
+    <style>*{user-select: none;}</style>
 </head>
 
 <body>
     <div class="container-main">
-        <div class="card">
-            <div class="alert alert-success collapse" id="alertSucessPerson" role="alert" style="width: 95%; margin: 10px;">
+        <div class="card h-90 col-xs-1 col-md-7 px-xs-1 px-md-5" style="margin: 0; padding: 3%;">
+            <div class="alert alert-success collapse" id="alertRegSucessPerson" role="alert" style="width: 95%; margin: 10px;">
                 <strong>Muito bem!</strong>&nbsp Pessoa registrada com sucesso...
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <div class="alert alert-success collapse" id="alertEditSucessPerson" role="alert" style="width: 95%; margin: 10px;">
+                <strong>Muito bem!</strong>&nbsp Pessoa editada com sucesso...
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="alert alert-danger collapse" id="alertErrorPerson" role="alert" style="width: 95%; margin: 10px;">
-                <strong>Temos um problema.</strong>
+                <strong>Existem campos obrigatórios não preenchidos!</strong>&nbsp Por favor, informe os dados...
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-danger collapse" id="alertEmailPerson" role="alert" style="width: 95%; margin: 10px;">
+                <strong>E-mail inválido!</strong>&nbsp Por favor, informe um e-mail...
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
-            <div class="p-5" style=" width: 100%;">
+            <a class="nav-link collapsed" href="main.html" style="width: 30%;" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <i class="bi bi-arrow-bar-left"></i>
+                <span>Início</span>
+            </a>
+            <div class="register py-3">
                 <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4" style="font-size: 28px; max-height: 20%; max-width: 100%;">Registrar uma nova pessoa!</h1>
+                    <h1 class="h4 text-gray-900 mb-4" style="font-size: 28px; max-height: 20%; max-width: 100%;">Cadastro da pessoa</h1>
                 </div>
-                <form class="user">
-                    <div class="col-sm-10" style="margin-top: 20px;">
-                        <input required type="text" class="form-control form-control-user" style="font-size: large;" id="firstName" placeholder="Nome completo">
+                <form class="user col-xs-0 col-md-10">
+                    <div class="form-group">
+                        <input required type="text" class="form-control form-control-user" style="font-size: large;" id="firstName" placeholder="Nome completo *">
                     </div>
-                    <div class="col-sm-10" style="margin-top: 20px;">
-                        <input required type="tel" class="form-control form-control-user" style="font-size: large;" id="phoneNumber"  onkeyup=handlePhone(event) maxlength="15" placeholder="Celular">
+                    <div class="form-group" >
+                        <input required type="tel" class="form-control form-control-user" style="font-size: large;" id="phoneNumber"  onkeyup=handlePhone(event) maxlength="15" placeholder="Celular *">
+                    </div>
+                    <div class="form-group" >
+                        <input required type="tel" class="form-control form-control-user" style="font-size: large;" id="email"  maxlength="35" placeholder="E-mail *">
                     </div>
                     
-                    <div class="drop" style="height: max-content; width: 78%;">  
-                        <select name="teste" class="drop-select" id="dropSelect">
-                            <option value="" disabled selected>Escolha um ponto de distribuição</option>
+                    <div class="form-group">  
+                        <select class="drop-select" id="dropSelect">
+                            <option value="" disabled selected>Escolha um ponto de distribuição *</option>
                         </select>
                     </div>
                     
@@ -205,7 +74,7 @@
                             <div class="form-group" style="font-size: larger;">
                                 <div class="custom-control custom-checkbox small">
                                     <input type="checkbox" class="custom-control-input" id="whatsCheck">
-                                    <label class="custom-control-label" for="whatsCheck">Enviar contas ao Whatsapp</label>
+                                    <label class="custom-control-label" for="whatsCheck">Enviar contas ao e-mail</label>
                                 </div>
                             </div>
                         </div>
@@ -214,21 +83,24 @@
                             <div class="info-switch" style="padding: 9px 5px 0 0; margin: 0 5px 0 0;">
                                 <span>É responsável</span>
                             </div>
-                            <span id="backgroundbtnSwitch" class="switch switch-true" onclick=switchResponsible()>
-                                <span id="btnSwitch" class="btn-switch btn-switch-true"></span>
+                            <span id="backgroundbtnSwitch" class="switch switch-false" onclick="switchResponsible(true, null)">
+                                <span id="btnSwitch" class="btn-switch btn-switch-false"></span>
                             </span>
                         </div>
                     </div>
                     
                     <hr>
-                    <a class="btn btn-primary btn-user btn-block" style="width:80%" onclick=registerPerson()>Confirmar cadastro</a>
+                    <div id="regPerson" class="btn-form">
+                        <a class="btn btn-primary btn-user btn-block" style="width:100%" onclick=submitPerson()>Confirmar</a>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <script type="text/javascript" src="../js/scripts.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://plentz.github.io/jquery-maskmoney/javascripts/jquery.maskMoney.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/scripts.js"></script>
     <script>window.onload = onLoadRegisterPerson();</script>
 </body>
 
