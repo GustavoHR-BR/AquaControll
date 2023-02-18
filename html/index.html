@@ -3,6 +3,7 @@
 
 <head>
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -10,56 +11,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/img/gotas48-SemFundo.ico">
     <title>Aqua Controll</title>
-    <style>
-        *{
-            user-select: none;
-        }
-
-        .btn-form{
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-        }
-
-        .card{
-            width: 600px;
-            padding: 60px 80px 60px 80px;
-            margin: 0;
-        }
-
-        .container-main{
-            height: 100vh;
-            width: 100vw;
-            margin: 0;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-image: linear-gradient(to right bottom, rgb(21, 110, 194), rgb(172, 172, 172));
-        }
-    </style>
+    <style>*{user-select: none;}</style>
     <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
 </head>
 
-<body>
-    <div class="container-main">
-        <div class="alert alert-danger collapse" id="alertError" role="alert" style="width: 40%;">
-            <strong>Temos um problema.</strong>&nbsp Usuário ou senha incorretos!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+<body id="bodyLogin">
+    <div class="container-main col-sm-12">
+        <div class="card col-xs-1 col-md-5 px-xs-1 px-md-5" style="margin: 0; height: max-content; padding: 5%;">
+            <div class="alert alert-danger collapse" id="alertError" role="alert" style="width: 100%;">
+                <strong>Temos um problema.</strong>&nbsp Usuário ou senha incorretos!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+    
+            <div class="alert alert-warning collapse" id="alertRedirect" role="alert" style="width: 100%;">
+                <strong>Muito bem!</strong>&nbsp Aguarde, estamos o redirecionando...
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
-        <div class="alert alert-warning collapse" id="alertRedirect" role="alert" style="width: 40%;">
-            <strong>Muito bem!</strong>&nbsp Aguarde, estamos o redirecionando...
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-        <div class="card">
-            <div class="text-center">
+            <div class="text-center mt-2">
                 <h1 class="h4 text-gray-900 mb-4" style="font-size: 30px;">Seja bem vindo!</h1>
             </div>
             <form class="user">
@@ -70,20 +43,20 @@
                     <input type="password" class="form-control form-control-user" id="pass" style="font-size: 18px;" placeholder="Senha">
                 </div>
                 <div class="form-group">
-                    <div class="custom-control custom-checkbox small" style="font-size: 18px;">
-                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" for="customCheck">Lembrar de mim</label>
+                    <div class="custom-control custom-checkbox small">
+                        <input type="checkbox" style="font-size: 16px;" class="custom-control-input" id="rememberCheck">
+                        <label style="font-size: 16px; margin-left: 5px;" class="custom-control-label" for="rememberCheck">Lembrar de mim</label>
                     </div>
                 </div>
                 <div class="btn-form">
-                    <button type="button" class="btn btn-primary btn-user btn-block" onclick=logIn() style="width: 100px; font-size: 16px;">Entrar</button>
+                    <button type="button" style="width:60%; font-size: 16px;" class="btn btn-primary btn-user btn-block" onclick=logIn()>Entrar</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <script type="text/javascript" src="../js/scripts.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/scripts.js"></script>
     <script>window.onload = onLoadIndex();</script>
 </body>
 
