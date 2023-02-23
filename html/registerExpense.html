@@ -52,24 +52,24 @@
                     </div>
 
                     <div class="form-group">
-                        <input required type="text" class="form-control form-control-user" style="font-size: large;" id="description" placeholder="Descrição">
+                        <input type="text" class="form-control form-control-user" style="font-size: large;" id="description" placeholder="Descrição">
                     </div>
 
                     <div class="switch-group">
                         <div class="left-side">
                             <div class="form-group">
-                                <input required type="tel" class="form-control form-control-user" style="font-size: large;" id="amount" maxlength="11" placeholder=" Valor *">
+                                <input required type="tel" class="form-control form-control-user" style="font-size: large; margin-left: -4px;" id="amount" maxlength="11" placeholder=" Valor *">
                             </div>
                         </div>
 
                         <div class="right-side" style=" padding-top: 7px;">
-                            <input required type="tel" class="form-control form-control-user" style="font-size: large;" id="paymentDate"  maxlength="10" onkeypress="dataMask(this, event)" placeholder="Data vencimento *">
+                            <input type="tel" class="form-control form-control-user" style="font-size: large;" id="paymentDate"  maxlength="10" onkeypress="dataMask(this, event)" placeholder="Data vencimento *">
                         </div>
                     </div>
                     
                     <hr>
-                    <div class="btn-form">
-                        <a class="btn btn-primary btn-user btn-block" style="width:100%" onclick=submitExpense()>Confirmar</a>
+                    <div id="regExpense" class="btn-form">
+                        <button class="btn btn-primary btn-user btn-block" style="width:100%" onclick=submitExpense()>Confirmar</button>
                     </div>
                 </form>
             </div>
@@ -82,7 +82,7 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script type="text/javascript" src="../js/scripts.js"></script>
 
-    <script>window.onload = ""</script>
+    <script>window.onload = onLoadRegisterExpense()</script>
 </body>
 
 </html>

@@ -13,12 +13,12 @@
     <meta charset='UTF-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/img/gotas48-SemFundo.ico">
-    <title>Menu Inicial</title>
+    <title>Painel Inicial</title>
 </head>
 
 <body id="page-top">
     <!-- modal delete confirmation -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -29,7 +29,7 @@
             Esta ação não poderá ser desfeita!
             </div>
             <div class="modal-footer">
-                <button type="button" id="modalConfirmation" class="btn btn-primary" onClick=deletePerson(this.id)>Confirmar</button>
+                <button type="button" id="modalConfirmation" class="btn btn-primary" onClick=deleteRow(this.id)>Confirmar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -48,7 +48,7 @@
             As informações de login serão perdidas.
             </div>
             <div class="modal-footer">
-                <button type="button" id="logoutConfirmation" class="btn btn-primary" onClick="logOut()"">Confirmar</button>
+                <button type="button" id="logoutConfirmation" class="btn btn-primary" onClick="logOut()">Confirmar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -68,44 +68,24 @@
             <div class="sidebar-heading">Controle</div>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="registerExpense.html" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" style="cursor: pointer;" onclick="changeActiveTable('1')" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="bi bi-cash-coin"></i>
                     <span>Despesas</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
             </li>
 
             <hr class="sidebar-divider">
             <div class="sidebar-heading">Cadastros</div>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="registerPerson.html" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="bi bi-person-fill"></i>
+                <a class="nav-link collapsed" style="cursor: pointer;" onclick="changeActiveTable('0')" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="bi bi-person-lines-fill"></i>
                     <span>Pessoas</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
+                <a class="nav-link collapsed" style="cursor: pointer;" onclick="changeActiveTable('2')" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="bi bi-cursor-fill"></i>
+                    <span>Pontos de Distribuição</span>
+                </a>
             </li>
         </ul>
         
@@ -159,28 +139,43 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                Total das despesas</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><p id="totalExpenses"></p></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <i class="bi bi-cash-coin fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                                pessoas ativas</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><p id="numberPeople"></p></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="bi bi-person-lines-fill fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                pontos de distribuição</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><p id="numberDistrPoint"></p></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="bi bi-cursor-fill fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -214,33 +209,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" id="sectionPerson">
                         <div class="container-fluid">
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Pessoas ativas</h6>
+                                <div class="headerTable">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">Pessoas ativas</h6>
+                                    </div>
+                                    <div class="separator" style="user-select: none; padding-top: 12px; background-color: #f8f9fc;">|</div>
+                                    <div class="card-header py-3" style="cursor: pointer;">
+                                        <h6 class="m-0 font-weight-bold text-primary"><a style="text-decoration: none;" href="registerPerson.html">Cadastrar</a></h6>
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="bordered striped centered highlight responsive-table">
-                                        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length"></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter"></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
+                                        <div id="dataTablePerson" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_lengthPerson"></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filterPerson" class="dataTables_filter"></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTablePerson" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
                                             <thead>
                                                 <tr role="row">
                                                     <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 12px">Nome</th>
@@ -257,6 +242,70 @@
                                         </table></div></div><div class="row"><div class="col-sm-12 col-md-5"></div></div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="sectionExpense" style="display: none;">
+                    <div class="container-fluid">
+                        <div class="card shadow mb-4">
+                            <div class="headerTable">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Despesas</h6>
+                                </div>
+                                <div class="separator" style="user-select: none; padding-top: 12px; background-color: #f8f9fc;">|</div>
+                                <div class="card-header py-3" style="cursor: pointer;">
+                                    <h6 class="m-0 font-weight-bold text-primary"><a style="text-decoration: none;" href="registerExpense.html">Cadastrar</a></h6>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="bordered striped centered highlight responsive-table">
+                                    <div id="dataTableExpense" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_lengthExpense"></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filterExpense" class="dataTables_filter"></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTableExpense" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 12px">Título</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 25px">Descrição</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 12px">Valor</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 5px;">Data vencimento</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 18px;">Opções</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id='expenseBody'>
+                                        </tbody>
+                                    </table></div></div><div class="row"><div class="col-sm-12 col-md-5"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="sectionDistrPoint" style="display: none;">
+                <div class="container-fluid">
+                    <div class="card shadow mb-4">
+                        <div class="headerTable">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Pontos de distribuição</h6>
+                            </div>
+                            <div class="separator" style="user-select: none; padding-top: 12px; background-color: #f8f9fc;">|</div>
+                            <div class="card-header py-3" style="cursor: pointer;">
+                                <h6 class="m-0 font-weight-bold text-primary"><a style="text-decoration: none;" href="registerDistrPoint.html">Cadastrar</a></h6>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="bordered striped centered highlight responsive-table">
+                                <div id="dataTableDistrPoint" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_lengthDistrPoint"></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filterDistrPoint" class="dataTables_filter"></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTableDistrPoint" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 150px">Descrição/Nome</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 50px">Ponto principal</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 18px;">Opções</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id='distrPointBody'>
+                                    </tbody>
+                                </table></div></div><div class="row"><div class="col-sm-12 col-md-5"></div></div>
                             </div>
                         </div>
                     </div>
