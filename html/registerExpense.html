@@ -48,7 +48,7 @@
                 </div>
                 <form class="user col-xs-0 col-md-10">
                     <div class="form-group">
-                        <input required type="text" class="form-control form-control-user" style="font-size: large;" id="title" placeholder="Título *">
+                        <input type="text" class="form-control form-control-user" style="font-size: large;" id="title" placeholder="Título *">
                     </div>
 
                     <div class="form-group">
@@ -58,18 +58,18 @@
                     <div class="switch-group">
                         <div class="left-side">
                             <div class="form-group">
-                                <input required type="tel" class="form-control form-control-user" style="font-size: large; margin-left: -4px;" id="amount" maxlength="11" placeholder=" Valor *">
+                                <input type="tel" class="form-control form-control-user" style="font-size: large; margin-left: -4px;" id="amount" maxlength="11" placeholder=" Valor *">
                             </div>
                         </div>
 
                         <div class="right-side" style=" padding-top: 7px;">
-                            <input type="tel" class="form-control form-control-user" style="font-size: large;" id="paymentDate"  maxlength="10" onkeypress="dataMask(this, event)" placeholder="Data vencimento *">
+                            <input type="tel" class="form-control form-control-user" style="font-size: large;" id="paymentDate"  maxlength="10" onkeypress="dataMask(this, event)" placeholder="Data de referência *">
                         </div>
                     </div>
                     
                     <hr>
                     <div id="regExpense" class="btn-form">
-                        <button class="btn btn-primary btn-user btn-block" style="width:100%" onclick=submitExpense()>Confirmar</button>
+                        <button type="button" class="btn btn-primary btn-user btn-block" style="width:100%" onclick=submitExpense()>Confirmar</button>
                     </div>
                 </form>
             </div>

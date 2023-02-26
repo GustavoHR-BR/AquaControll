@@ -258,11 +258,11 @@ async function Refresh(){
 }
 
 function onLoadMain(){
-    Encrypt();
     if (sessionStorage.getItem("hashUser") == null) {
         window.location.href = "index.html";    
     }else {
         try {
+            hiddeMenu(); hiddeMenu();
             // Busca nome da comunidade 
             if (sessionStorage.getItem("nameComunity") != null) {
                 document.getElementById("name-comunity").innerText = sessionStorage.getItem("nameComunity");
@@ -435,64 +435,82 @@ function changeActiveTable(index){
 }
 
 async function onLoadRegisterExpense(){
-    if (sessionStorage.getItem("formExpenseAction") == "edit") {
-        document.getElementById('title').value = sessionStorage.getItem("eTitle");
-        document.getElementById('description').value = sessionStorage.getItem("eDescription");
-        document.getElementById('amount').value = sessionStorage.getItem("eAmount");
-        document.getElementById('paymentDate').value = sessionStorage.getItem("ePaymentDate");
-    }else{
-        document.getElementById('title').value = "";
-        document.getElementById('description').value = "";
-        document.getElementById('amount').value = "";
-        document.getElementById('paymentDate').value = "";
+    if (sessionStorage.getItem("hashUser") == null) {
+        window.location.href = "index.html";    
+    }else {
+        if (sessionStorage.getItem("formExpenseAction") == "edit") {
+            document.getElementById('title').value = sessionStorage.getItem("eTitle");
+            document.getElementById('description').value = sessionStorage.getItem("eDescription");
+            document.getElementById('amount').value = sessionStorage.getItem("eAmount");
+            document.getElementById('paymentDate').value = sessionStorage.getItem("ePaymentDate");
+        }else{
+            document.getElementById('title').value = "";
+            document.getElementById('description').value = "";
+            document.getElementById('amount').value = "";
+            document.getElementById('paymentDate').value = "";
 
-        if (sessionStorage.getItem("firstLoad") == null){
-            sessionStorage.setItem("firstLoad", "False");
-            window.location.reload(true);
+            if (sessionStorage.getItem("firstLoad") == null){
+                sessionStorage.setItem("firstLoad", "False");
+                window.location.reload(true);
+            }
         }
+        document.getElementById('title').focus();
     }
-    document.getElementById('title').focus();
+}
+
+function hiddeMenu(){
+    if (document.getElementById("accordionSidebar").style.display == "none") {
+        document.getElementById("accordionSidebar").style.display = "block";
+        document.getElementById("accordionSidebarHidden").style.display = "none";
+    }else{
+        document.getElementById("accordionSidebar").style.display = "none";
+        document.getElementById("accordionSidebarHidden").style.display = "block";
+    }
 }
 
 async function onLoadRegisterDistrPoint(){
-    let dropSelect = document.getElementById("dropSelectDistrPoint");
-    dropSelect.disabled = dropSelect.length <= 1;
+    if (sessionStorage.getItem("hashUser") == null) {
+        window.location.href = "index.html";    
+    }else {
+        let dropSelect = document.getElementById("dropSelectDistrPoint");
+        dropSelect.disabled = dropSelect.length <= 1;
 
-    MainPoint = new Parse.Query(Parse.Object.extend("MainPoint"));
-    MainPoint.each(function(mp){
-        if(mp){
-            var o = document.createElement("option");
-            o.value = mp.id;
-            o.text = mp.get("name");
-            document.getElementById("dropSelectDistrPoint").appendChild(o);
+        MainPoint = new Parse.Query(Parse.Object.extend("MainPoint"));
+        MainPoint.each(function(mp){
+            if(mp){
+                var o = document.createElement("option");
+                o.value = mp.id;
+                o.text = mp.get("name");
+                document.getElementById("dropSelectDistrPoint").appendChild(o);
 
-            if (document.getElementById("dropSelectDistrPoint").disabled) {
-                document.getElementById("dropSelectDistrPoint").disabled = false; 
+                if (document.getElementById("dropSelectDistrPoint").disabled) {
+                    document.getElementById("dropSelectDistrPoint").disabled = false; 
+                }
+            } else {
+                console.log("Nenhum ponto principal encontrado!");
             }
-        } else {
-            console.log("Nenhum ponto principal encontrado!");
-        }
-    }).catch(function(error){
-        console.log("Error: " + error.code + " " + error.message);       
-    });
+        }).catch(function(error){
+            console.log("Error: " + error.code + " " + error.message);       
+        });
 
-    if (sessionStorage.getItem("formDistrPointAction") == "edit") {
-        document.getElementById('nameDistrPoint').value = sessionStorage.getItem("dpName");
-        while (dropSelect.length <= 1) {
-            await delay(1);
-            document.getElementById("dropSelectDistrPoint").value = sessionStorage.getItem("dpIdMainPoint");
-        }
-    }else{
-        document.getElementById('nameDistrPoint').value = "";
-        document.getElementById('dropSelectDistrPoint')[0].selected = 'selected';
+        if (sessionStorage.getItem("formDistrPointAction") == "edit") {
+            document.getElementById('nameDistrPoint').value = sessionStorage.getItem("dpName");
+            while (dropSelect.length <= 1) {
+                await delay(1);
+                document.getElementById("dropSelectDistrPoint").value = sessionStorage.getItem("dpIdMainPoint");
+            }
+        }else{
+            document.getElementById('nameDistrPoint').value = "";
+            document.getElementById('dropSelectDistrPoint')[0].selected = 'selected';
 
-        if (sessionStorage.getItem("firstLoad") == null){
-            sessionStorage.setItem("firstLoad", "False");
-            window.location.reload(true);
+            if (sessionStorage.getItem("firstLoad") == null){
+                sessionStorage.setItem("firstLoad", "False");
+                window.location.reload(true);
+            }
         }
+
+        document.getElementById('nameDistrPoint').focus();
     }
-
-    document.getElementById('nameDistrPoint').focus();
 }
 
 async function onLoadRegisterPerson(){
@@ -692,12 +710,12 @@ function submitExpense(){
 
                 if (e.save()){
                     showAlert("#alertRegSucessExpense");
-                    sendExpenseEmail(
-                        "[" + sessionStorage.getItem("activePeopleEmails") + "]", 
-                        document.getElementById("title").value, 
-                        document.getElementById("amount").value, 
-                        document.getElementById("paymentDate").value
-                    );
+                    // sendExpenseEmail(
+                    //     "[" + sessionStorage.getItem("activePeopleEmails") + "]", 
+                    //     document.getElementById("title").value, 
+                    //     document.getElementById("amount").value, 
+                    //     document.getElementById("paymentDate").value
+                    // );
                     document.getElementById("title").value = "";
                     document.getElementById("description").value = "";
                     document.getElementById("amount").value = "";

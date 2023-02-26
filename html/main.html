@@ -56,38 +56,56 @@
     </div>
 
     <div id="wrapper">
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+        <!-- class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" -->
+        <div class="menu-display" id="accordionSidebar">
+            <a class="nav-link collapsed" style="cursor: pointer;" onclick="hiddeMenu()" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <div class="text-menu-accord">
+                    <i class="bi bi-list"></i>
+                </div>
+            </a>    
+
             <hr class="sidebar-divider my-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="main.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Painel Inicial</span></a>
-            </li>
+            <a class="nav-link" href="main.html">
+                <div class="text-menu-accord">
+                    <i class="fas fa-fw fa-tachometer-alt"></i><br>
+                    <span>Painel Inicial</span>
+                </div>
+            </a>
 
             <hr class="sidebar-divider">
-            <div class="sidebar-heading">Controle</div>
+            <div class="text-menu-accord">
+                <div class="menu-subtitle">Controle</div>
+            </div>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" style="cursor: pointer;" onclick="changeActiveTable('1')" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="bi bi-cash-coin"></i>
+            <a class="nav-link collapsed" style="cursor: pointer;" onclick="changeActiveTable('1')" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <div class="text-menu-accord">
+                    <i class="bi bi-cash-coin"></i><br>
                     <span>Despesas</span>
-                </a>
-            </li>
+                </div>
+            </a>
 
             <hr class="sidebar-divider">
-            <div class="sidebar-heading">Cadastros</div>
+            <div class="text-menu-accord">
+                <div class="menu-subtitle">Cadastros</div>
+            </div>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" style="cursor: pointer;" onclick="changeActiveTable('0')" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="bi bi-person-lines-fill"></i>
+            <a class="nav-link collapsed" style="cursor: pointer;" onclick="changeActiveTable('0')" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <div class="text-menu-accord">
+                    <i class="bi bi-person-lines-fill"></i><br>
                     <span>Pessoas</span>
-                </a>
-                <a class="nav-link collapsed" style="cursor: pointer;" onclick="changeActiveTable('2')" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="bi bi-cursor-fill"></i>
+                </div>
+            </a>
+            <a class="nav-link collapsed" style="cursor: pointer;" onclick="changeActiveTable('2')" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <div class="text-menu-accord">
+                    <i class="bi bi-cursor-fill"></i><br>
                     <span>Pontos de Distribuição</span>
-                </a>
-            </li>
-        </ul>
+                </div>
+            </a>
+        </div>
+
+        <div id="accordionSidebarHidden" class="menu-hidden">
+            <i class="bi bi-list" onclick="hiddeMenu()"></i>
+        </div>
         
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
@@ -128,7 +146,6 @@
                             <button class="logouButton" type='button' data-bs-toggle='modal' data-bs-target='#modalLogout'>Sair</button>
                         </div>
                     </ul>
-
                 </nav>
 
                 <div class="container-fluid">
@@ -211,67 +228,33 @@
                         </div>
                     </div>
 
-                    <div class="row" id="sectionPerson">
+                    <div class="tablesList row" id="sectionPerson">
                         <div class="container-fluid">
-                            <div class="card shadow mb-4">
-                                <div class="headerTable">
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Pessoas ativas</h6>
-                                    </div>
-                                    <div class="separator" style="user-select: none; padding-top: 12px; background-color: #f8f9fc;">|</div>
-                                    <div class="card-header py-3" style="cursor: pointer;">
-                                        <h6 class="m-0 font-weight-bold text-primary"><a style="text-decoration: none;" href="registerPerson.html">Cadastrar</a></h6>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="bordered striped centered highlight responsive-table">
-                                        <div id="dataTablePerson" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_lengthPerson"></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filterPerson" class="dataTables_filter"></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTablePerson" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
-                                            <thead>
-                                                <tr role="row">
-                                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 12px">Nome</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 12px">Telefone</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 12px">E-mail</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 49px;">Distribuição atual</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 12px;">Responsável</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 12px;">Envia e-mail</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 18px;">Opções</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id='personBody'>
-                                            </tbody>
-                                        </table></div></div><div class="row"><div class="col-sm-12 col-md-5"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" id="sectionExpense" style="display: none;">
-                    <div class="container-fluid">
-                        <div class="card shadow mb-4">
                             <div class="headerTable">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Despesas</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Pessoas ativas</h6>
                                 </div>
                                 <div class="separator" style="user-select: none; padding-top: 12px; background-color: #f8f9fc;">|</div>
                                 <div class="card-header py-3" style="cursor: pointer;">
-                                    <h6 class="m-0 font-weight-bold text-primary"><a style="text-decoration: none;" href="registerExpense.html">Cadastrar</a></h6>
+                                    <h6 class="m-0 font-weight-bold text-primary"><a style="text-decoration: none;" href="registerPerson.html">Cadastrar</a></h6>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="bordered striped centered highlight responsive-table">
-                                    <div id="dataTableExpense" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_lengthExpense"></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filterExpense" class="dataTables_filter"></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTableExpense" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
+                                    <div id="dataTablePerson" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_lengthPerson"></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filterPerson" class="dataTables_filter"></div></div></div><div class="row"><div class="col-sm-12">
+                                    <table class="table table-bordered dataTable myTable" id="dataTablePerson" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
                                         <thead>
                                             <tr role="row">
-                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 12px">Título</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 25px">Descrição</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 12px">Valor</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 5px;">Data vencimento</th>
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 12px">Nome</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 12px">Telefone</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 12px">E-mail</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 49px;">Distribuição atual</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 12px;">Responsável</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 12px;">Envia e-mail</th>
                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 18px;">Opções</th>
                                             </tr>
                                         </thead>
-                                        <tbody id='expenseBody'>
+                                        <tbody id='personBody'>
                                         </tbody>
                                     </table></div></div><div class="row"><div class="col-sm-12 col-md-5"></div></div>
                                 </div>
@@ -279,34 +262,63 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row" id="sectionDistrPoint" style="display: none;">
-                <div class="container-fluid">
-                    <div class="card shadow mb-4">
+                <div class="tablesList row" id="sectionExpense" style="display: none;">
+                    <div class="container-fluid">
                         <div class="headerTable">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Pontos de distribuição</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Despesas</h6>
                             </div>
                             <div class="separator" style="user-select: none; padding-top: 12px; background-color: #f8f9fc;">|</div>
                             <div class="card-header py-3" style="cursor: pointer;">
-                                <h6 class="m-0 font-weight-bold text-primary"><a style="text-decoration: none;" href="registerDistrPoint.html">Cadastrar</a></h6>
+                                <h6 class="m-0 font-weight-bold text-primary"><a style="text-decoration: none;" href="registerExpense.html">Cadastrar</a></h6>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="bordered striped centered highlight responsive-table">
-                                <div id="dataTableDistrPoint" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_lengthDistrPoint"></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filterDistrPoint" class="dataTables_filter"></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTableDistrPoint" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
+                                <div id="dataTableExpense" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_lengthExpense"></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filterExpense" class="dataTables_filter"></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTableExpense" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
                                     <thead>
                                         <tr role="row">
-                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 150px">Descrição/Nome</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 50px">Ponto principal</th>
+                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 12px">Título</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 25px">Descrição</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 12px">Valor</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 5px;">Data vencimento</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 18px;">Opções</th>
                                         </tr>
                                     </thead>
-                                    <tbody id='distrPointBody'>
+                                    <tbody id='expenseBody'>
                                     </tbody>
                                 </table></div></div><div class="row"><div class="col-sm-12 col-md-5"></div></div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tablesList row" id="sectionDistrPoint" style="display: none;" class="">
+                <div class="container-fluid">
+                    <div class="headerTable">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Pontos de distribuição</h6>
+                        </div>
+                        <div class="separator" style="user-select: none; padding-top: 12px; background-color: #f8f9fc;">|</div>
+                        <div class="card-header py-3" style="cursor: pointer;">
+                            <h6 class="m-0 font-weight-bold text-primary"><a style="text-decoration: none;" href="registerDistrPoint.html">Cadastrar</a></h6>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="bordered striped centered highlight responsive-table">
+                            <div id="dataTableDistrPoint" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_lengthDistrPoint"></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filterDistrPoint" class="dataTables_filter"></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTableDistrPoint" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 150px">Descrição/Nome</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 50px">Ponto principal</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 18px;">Opções</th>
+                                    </tr>
+                                </thead>
+                                <tbody id='distrPointBody'>
+                                </tbody>
+                            </table></div></div><div class="row"><div class="col-sm-12 col-md-5"></div></div>
                         </div>
                     </div>
                 </div>
