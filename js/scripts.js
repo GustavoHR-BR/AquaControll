@@ -425,7 +425,7 @@ function changeActiveTable(index){
             document.getElementById("sectionDistrPoint").style.display  = "none";
             sessionStorage.setItem("indexTypeActive", 1);
             break;
-        case "2":
+        case "2": // Distr point
             document.getElementById("sectionExpense").style.display     = "none";
             document.getElementById("sectionPerson").style.display      = "none";
             document.getElementById("sectionDistrPoint").style.display  = "block";
@@ -710,12 +710,12 @@ function submitExpense(){
 
                 if (e.save()){
                     showAlert("#alertRegSucessExpense");
-                    // sendExpenseEmail(
-                    //     "[" + sessionStorage.getItem("activePeopleEmails") + "]", 
-                    //     document.getElementById("title").value, 
-                    //     document.getElementById("amount").value, 
-                    //     document.getElementById("paymentDate").value
-                    // );
+                    sendExpenseEmail(
+                        "[" + sessionStorage.getItem("activePeopleEmails") + "]", 
+                        document.getElementById("title").value, 
+                        document.getElementById("amount").value, 
+                        document.getElementById("paymentDate").value
+                    );
                     document.getElementById("title").value = "";
                     document.getElementById("description").value = "";
                     document.getElementById("amount").value = "";
@@ -926,7 +926,7 @@ function logIn() {
                 query.equalTo("user", JSON.parse(localStorage.getItem(hashUser)).objectId);
                 query.first().then(function (s) {
                     if (s) {
-                        s.destroy(); //not working
+                        s.destroy(); 
                     } else {
                         console.log("Sem sessões para o usuário...");
                         return null;
